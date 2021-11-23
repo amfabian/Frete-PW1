@@ -12,6 +12,7 @@ public class Menu {
 	public static void main(String[] args) {
 		ArrayList<Frete> fretes = new ArrayList();
 		while(true) {
+			boolean flag;
 			switch(montaMenu()) {
 			case 1://Cadastrar Frete
 
@@ -83,28 +84,17 @@ public class Menu {
 				fretes.add(frete);
 				break;
 
-			case 2://Pesquisar Frete usando a origem e o destino
+			case 2://Listar todos os fretes
+				
+				JOptionPane.showMessageDialog(null, "Opção 02!");
 
-				boolean flag = false;
-				if(fretes.isEmpty()) { //caso a lista de fretes esteja vazia, informa e volta para o menu
-					JOptionPane.showMessageDialog(null, "Sem fretes cadastrados!");
-					break;
-				}
-				else {
-					String cidPesq = JOptionPane.showInputDialog("Informe a cidade:");
-					for (Frete FretePesq: fretes) {
-						if(FretePesq.getCidadeOrigem().equals(cidPesq) | FretePesq.getCidadeDestino().equals(cidPesq)) {
-							JOptionPane.showMessageDialog(null, "Frete localizado: \n" + FretePesq.toString());
-							flag = true;
-						}		
-					}
-				}
-				if(flag==false) 
-					JOptionPane.showMessageDialog(null, "Não exite frete para a cidade informada!"); 
+			
 				break;  
 
-			case 3: //Pesquisar se um cliente possui algum frete cadastrado
+			case 3: //Listar fretes de um cliente (pesquisar pelo nome)
 
+				JOptionPane.showMessageDialog(null, "Opção 03!");
+				
 				flag = false;
 				if(fretes.isEmpty()) {//caso a lista de fretes esteja vazia, informa e volta para o menu
 					JOptionPane.showMessageDialog(null, "Sem fretes cadastrados!");
@@ -123,7 +113,7 @@ public class Menu {
 					JOptionPane.showMessageDialog(null, "O Ciente não possui frete cadastrado!"); 
 				break;  
 
-			case 4://Pesquisar Frete usando a situacao
+			case 4://Remover Frete usando a situacao
 
 				flag = false;
 				if(fretes.isEmpty()) {//caso a lista de fretes esteja vazia, informa e volta para o menu
