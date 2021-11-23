@@ -1,10 +1,10 @@
 package menus;
 
 public enum OpcoesMenu {
-	CADASTRAR_FRETE(1, "1 - Cadastrar Frete"),
-	PESQUISAR_FRETE(2, "2 - Pesquisar Frete usando a origem e o destino"),
-	PESQUISAR_CLIENTE_FRETE(3, "3 - Pesquisar se um cliente possui algum frete cadastrado"),
-	PESQUISAR_FRETE_SIT(4, "4 - Pesquisar Frete usando a situacao"),
+	CADASTRAR_FRETE(1, "1 - Cadastrar frete"),
+	LISTAR_FRETE(2, "2 - Listar todos os fretes"),
+	LISTAR_FRETE_CLIENTE(3, "3 - Listar os fretes de um cliente"),
+	REMOVER_FRETE(4, "4 - Remover Frete usando a situacao"),
 	SAIR(5, "5 - Sair");
 
 	private final int identificador;
