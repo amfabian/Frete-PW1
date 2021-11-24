@@ -1,16 +1,23 @@
 package menus;
 
 import java.util.ArrayList;
+import java.util.TreeSet;
+
 import javax.swing.JOptionPane;
+
 
 import fretes.Frete;
 import fretes.ItemFrete;
 import pessoas.Cliente;
+import pessoas.Pessoa;
+import util.Conjunto;
 import util.Situacao;
 
 public class Menu {
 	public static void main(String[] args) {
 		ArrayList<Frete> fretes = new ArrayList();
+		//	Agenda<Pessoa> agenda = new Agenda();
+
 		while(true) {
 			boolean flag;
 			switch(montaMenu()) {
@@ -78,6 +85,8 @@ public class Menu {
 
 				//Finalmente cria o frete e guarda os valores.
 				//
+
+
 				Frete frete = new Frete(valor, cidadeOrigem, cidadeDestino, itens, situacao, cliente);
 				JOptionPane.showMessageDialog(null, "Frete: " + frete.toString());
 				//add o frete na lista de fretes.
@@ -85,16 +94,49 @@ public class Menu {
 				break;
 
 			case 2://Listar todos os fretes
-				
+
 				JOptionPane.showMessageDialog(null, "Opção 02!");
+				Conjunto<Frete> conjunto = new Conjunto();
+			
+				JOptionPane.showMessageDialog(null, "Criado CONJUNTO");
+				ArrayList<ItemFrete> itens1 = new ArrayList();
+
+				ItemFrete item1 = new ItemFrete("descricao", 10.0);
+				itens1.add(item1);
+				JOptionPane.showMessageDialog(null, "Criado item para o Frete");
+
+				Frete frete1 = new Frete(10.0, "poa", "canoas", itens1, Situacao.ENCERRADO, new Cliente("Alexandre", "Rua", "999", "123"));
+
+				JOptionPane.showMessageDialog(null, "Frete: " + frete1.toString());
+
+				conjunto.cadastrar(frete1);
 
 			
+
+				JOptionPane.showMessageDialog(null, "Imprimindo treeset: " + conjunto.listarTodos());
+				
+				Frete frete10 = new Frete(10.0, "canoas", "poa", itens1, Situacao.CANCELADO, new Cliente("Eduardo", "Avenida", "888", "456"));
+				conjunto.cadastrar(frete10);
+				JOptionPane.showMessageDialog(null, "Imprimindo treeset 2: " + conjunto.listarTodos());
+				
+				
+				JOptionPane.showMessageDialog(null, "Pesquisando item 1 ");
+				
+				JOptionPane.showMessageDialog(null, "Item pesquisado 1: " + conjunto.pesquisar(frete1));
+				
+				conjunto.remover(frete1);
+				JOptionPane.showMessageDialog(null, "Removendo item 1 ");
+
+				JOptionPane.showMessageDialog(null, "Imprimindo treeset depois da remoção: " + conjunto.listarTodos());
+
+				JOptionPane.showMessageDialog(null, "Pesquisando 1 apos remocao: " + conjunto.pesquisar(frete1));
+
 				break;  
 
 			case 3: //Listar fretes de um cliente (pesquisar pelo nome)
 
 				JOptionPane.showMessageDialog(null, "Opção 03!");
-				
+
 				flag = false;
 				if(fretes.isEmpty()) {//caso a lista de fretes esteja vazia, informa e volta para o menu
 					JOptionPane.showMessageDialog(null, "Sem fretes cadastrados!");
@@ -155,6 +197,32 @@ public class Menu {
 
 			case 5:System.exit(0);
 			break;
+
+			case 6://Listar todos os fretes
+
+				JOptionPane.showMessageDialog(null, "Opção 02!");
+				TreeSet<Frete> fretesTS2 = new TreeSet<>();
+				JOptionPane.showMessageDialog(null, "Criado TreeSet");
+				ArrayList<ItemFrete> itens2 = new ArrayList();
+
+				ItemFrete item2 = new ItemFrete("descricao", 10.0);
+				itens2.add(item2);
+				JOptionPane.showMessageDialog(null, "Criado item para o Frete");
+
+				Frete frete2 = new Frete(10.0, "poa", "canoas", itens2, Situacao.ENCERRADO, new Cliente("Alexandre", "Rua", "999", "123"));
+
+				JOptionPane.showMessageDialog(null, "Frete: " + frete2.toString());
+
+				fretesTS2.add(frete2);
+
+				JOptionPane.showMessageDialog(null, "Criado TreeSet");
+
+				JOptionPane.showMessageDialog(null, "Imprimindo treeset: " + fretesTS2.first());
+
+
+
+
+				break;  
 
 			default: 
 				JOptionPane.showMessageDialog(null, "Escolha uma das opções anteriores!"); 

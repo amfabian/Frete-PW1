@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import pessoas.Cliente;
 import util.Situacao;
 
-public class Frete {
+public class Frete implements Comparable<Frete>{
 	private Double valor;
 	private String cidadeOrigem;
 	private String cidadeDestino;
@@ -77,6 +77,15 @@ public class Frete {
 
 		return "[" +  "Preço: R$" + valor + ", Cidade de Origem: " + cidadeOrigem + ", Cidade de Destino: " + cidadeDestino +  "]\n" + cliente.toString() + aux + 
 				"Situação: " + situacao.getDescricao() ;
+	}
+	@Override
+	public int compareTo(Frete o) {
+		// TODO Auto-generated method stub
+		if(getValor() == o.getValor())
+			return 0;
+		else if(getValor() < o.getValor())
+			return -1;
+		return 1;
 	}
 
 
