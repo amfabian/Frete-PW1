@@ -1,9 +1,6 @@
 package menus;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.TreeSet;
 
@@ -170,26 +167,35 @@ public class Menu {
 					out.flush();
 					out.close();
 					System.out.println("salvando objeto no arquivo!\n");
-					
-				}catch(Exception e) {
-					JOptionPane.showMessageDialog(null, "Exceção ao ler ou escrever objeto!");
-					
+
+				} catch(FileNotFoundException e) {
+					JOptionPane.showMessageDialog(null, "Exceção arquivo não encontrado!");
+					e.printStackTrace();
+				} catch (SecurityException e) {
+					JOptionPane.showMessageDialog(null, "Exceção de segurança (sem permissão de escrita)!");
+					e.printStackTrace();
+				} catch (IOException e) {
+					JOptionPane.showMessageDialog(null, "Falha na opeação de Entrada ou Saída!");
+					e.printStackTrace();
+
+				} catch(NullPointerException e) {
+					JOptionPane.showMessageDialog(null, "Exceção escrever, objeto null!");
 					e.printStackTrace();
 				}
 				break;
-				
+
 			case 7:
 				JOptionPane.showMessageDialog(null, "Opção 07 - Ler arquivo!");
-				
+
 				try {
 					String nomeArq = "arquivoObjetos.txt";
-					ObjectInputStream in = new ObjectInputStream(new FileInputStream( nomeArq) );
+					ObjectInputStream in = new ObjectInputStream(new FileInputStream(nomeArq));
 					Conjunto<Frete> conjuntinho = new Conjunto();
 					conjuntinho = (Conjunto) in.readObject();
 					JOptionPane.showMessageDialog(null, "Objeto lido do arquivo:\n" + conjuntinho.listarTodos());
-					
+
 					in.close();
-					
+
 				}catch(Exception e) {
 					JOptionPane.showMessageDialog(null, "Exceção ao ler ou escrever objeto!");
 					e.printStackTrace();
