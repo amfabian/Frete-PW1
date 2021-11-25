@@ -11,6 +11,7 @@ import fretes.Frete;
 import fretes.ItemFrete;
 import pessoas.Cliente;
 import pessoas.Pessoa;
+import util.Arquivo;
 import util.Conjunto;
 import util.Situacao;
 
@@ -175,7 +176,7 @@ public class Menu {
 					JOptionPane.showMessageDialog(null, "Exceção de segurança (sem permissão de escrita)!");
 					e.printStackTrace();
 				} catch (IOException e) {
-					JOptionPane.showMessageDialog(null, "Falha na opeação de Entrada ou Saída!");
+					JOptionPane.showMessageDialog(null, "Falha na operação de Entrada ou Saída!");
 					e.printStackTrace();
 
 				} catch(NullPointerException e) {
@@ -201,7 +202,17 @@ public class Menu {
 					e.printStackTrace();
 				}
 				break;
-
+			case 8:
+				Arquivo arquivo = new Arquivo("arquivoClasseObjetos.txt");
+				arquivo.escreverArquivo(conjunto);
+				break;
+			case 9:
+				JOptionPane.showMessageDialog(null, "Opção 09 - Ler arquivo METODO!");
+				Arquivo arquivo1 = new Arquivo("arquivoClasseObjetos.txt");
+				arquivo1.lerArquivo("arquivoClasseObjetos.txt");
+			
+				break;
+				
 			default: 
 				JOptionPane.showMessageDialog(null, "Escolha uma das opções anteriores!"); 
 
