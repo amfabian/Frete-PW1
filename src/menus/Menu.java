@@ -146,37 +146,7 @@ public class Menu {
 			case 3: //Listar fretes de um cliente (pesquisar pelo nome)
 
 				JOptionPane.showMessageDialog(null, "Opção 03!");
-				
-				String nomePesq = JOptionPane.showInputDialog("informe o nome");
-				Frete fretePesq = new Frete(100.0, "poa", "canoas", null, Situacao.ENCERRADO, new Cliente("Alexandre", "Rua", "999", "123"));
-				 JOptionPane.showMessageDialog(null, "Criado fretePesq");
-				
-				 
-				 JOptionPane.showMessageDialog(null, "valor Pesquisa: " + fretePesq);
-				 JOptionPane.showMessageDialog(null, "valor conjunto: " + conjunto.listarTodos());
-				
-				if(conjunto.pesquisar(fretePesq))
-					 JOptionPane.showMessageDialog(null, "Cliente encontrado");
-				else
-	    	    	  JOptionPane.showMessageDialog(null, "Cliente não encontrado");
-
-			/*	flag = false;
-				if(fretes.isEmpty()) {//caso a lista de fretes esteja vazia, informa e volta para o menu
-					JOptionPane.showMessageDialog(null, "Sem fretes cadastrados!");
-					break;
-				}
-				else {
-					String cpfPesq = JOptionPane.showInputDialog("Informe o cpf:");
-					for (Frete FretePesq: fretes) {
-						if(FretePesq.getCliente().getCpf().equals(cpfPesq)) {
-							JOptionPane.showMessageDialog(null, "O Cliente possui frete: \n" + FretePesq.toString());
-							flag = true;
-						}
-					}
-				}
-				if(flag==false) 
-					JOptionPane.showMessageDialog(null, "O Ciente não possui frete cadastrado!"); 
-			*/
+				JOptionPane.showMessageDialog(null, conjunto.procurarNome(JOptionPane.showInputDialog("Informe o nome do cliente:")));
 				break;  
 
 			case 4://Remover Frete usando a situacao
@@ -259,13 +229,8 @@ public class Menu {
 				break;  
 
 				case 7://Listar todos os fretes
-
 					JOptionPane.showMessageDialog(null, "Opção 07!");
-				
-	
 					JOptionPane.showMessageDialog(null, conjunto.procurarNome(JOptionPane.showInputDialog("Informe o nome do cliente:")));
-		//			}
-			//		else JOptionPane.showMessageDialog(null, "Nome NAO encontrado");
 					break;
 					
 				
