@@ -228,12 +228,7 @@ public class Menu {
 
 				break;  
 
-				case 7://Listar todos os fretes
-					JOptionPane.showMessageDialog(null, "Opção 07!");
-					JOptionPane.showMessageDialog(null, conjunto.procurarNome(JOptionPane.showInputDialog("Informe o nome do cliente:")));
-					break;
-					
-				
+			
 			default: 
 				JOptionPane.showMessageDialog(null, "Escolha uma das opções anteriores!"); 
 
