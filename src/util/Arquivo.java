@@ -58,22 +58,19 @@ public class Arquivo {
 		return flag;
 	}
 	
-	public boolean lerArquivo (String nomeArq) {
-		boolean flag = false;
+	public Conjunto lerArquivo (String nomeArq) {
+				
+	try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(nomeArq));){
 		
-	try {
 		
-		ObjectInputStream in = new ObjectInputStream(new FileInputStream(nomeArq));
 		Conjunto<Frete> conjuntinho = new Conjunto();
 		conjuntinho = (Conjunto) in.readObject();
-		JOptionPane.showMessageDialog(null, "Objeto lido do arquivo:\n" + conjuntinho.listarTodos());
-
-		in.close();
-		
+		return conjuntinho;
+				
 	}catch(Exception e) {
 		JOptionPane.showMessageDialog(null, "Exceção ao ler ou escrever objeto!");
 		e.printStackTrace();
-	} finally {flag = true;}
-	return flag;
+	} 
+	return null;
 	}
 }

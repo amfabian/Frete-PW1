@@ -209,7 +209,9 @@ public class Menu {
 			case 9:
 				JOptionPane.showMessageDialog(null, "Opção 09 - Ler arquivo METODO!");
 				Arquivo arquivo1 = new Arquivo("arquivoClasseObjetos.txt");
-				arquivo1.lerArquivo("arquivoClasseObjetos.txt");
+				Conjunto<Frete> conjuntinho = new Conjunto();
+				conjuntinho = arquivo1.lerArquivo("arquivoClasseObjetos.txt");
+				JOptionPane.showMessageDialog(null, "Objeto lido do arquivo:\n" + conjuntinho.listarTodos());
 			
 				break;
 				
