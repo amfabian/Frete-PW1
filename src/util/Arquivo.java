@@ -1,11 +1,6 @@
 package util;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 import javax.swing.JOptionPane;
 
@@ -41,7 +36,7 @@ public class Arquivo {
 			System.out.println("salvando objeto no arquivo!\n");
 
 		} catch(FileNotFoundException e) {
-			JOptionPane.showMessageDialog(null, "Exceção arquivo não encontrado!");
+			JOptionPane.showMessageDialog(null, "Exceção arquivo não existe!");
 			e.printStackTrace();
 		} catch (SecurityException e) {
 			JOptionPane.showMessageDialog(null, "Exceção de segurança (sem permissão de escrita)!");
@@ -67,8 +62,24 @@ public class Arquivo {
 		conjuntinho = (Conjunto) in.readObject();
 		return conjuntinho;
 				
-	}catch(Exception e) {
-		JOptionPane.showMessageDialog(null, "Exceção ao ler ou escrever objeto!");
+	}  catch(FileNotFoundException e) {
+		JOptionPane.showMessageDialog(null, "Exceção arquivo não encontrado!");
+		e.printStackTrace();
+	} catch (SecurityException e) {
+		JOptionPane.showMessageDialog(null, "Exceção de segurança (sem permissão de escrita)!");
+		e.printStackTrace();
+	}catch(StreamCorruptedException e) {
+		JOptionPane.showMessageDialog(null, "Erro de corrupção no objeto!");
+		e.printStackTrace();
+	}catch (IOException e) {
+		JOptionPane.showMessageDialog(null, "Falha na operação de Entrada ou Saída!");
+		e.printStackTrace();
+
+	} catch(NullPointerException e) {
+		JOptionPane.showMessageDialog(null, "Exceção escrever, objeto null!");
+		e.printStackTrace();
+	} catch (ClassNotFoundException e) {
+		JOptionPane.showMessageDialog(null, "Classe não encontrada!");
 		e.printStackTrace();
 	} 
 	return null;

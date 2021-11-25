@@ -17,18 +17,14 @@ import util.Situacao;
 
 public class Menu {
 	public static void main(String[] args) {
+		Arquivo arquivo = new Arquivo("arquivoObjetos.txt");
 		Conjunto<Frete> conjunto = new Conjunto();
+		if(arquivo.lerArquivo("arquivoObjetos.txt")!=null) {
+			conjunto = arquivo.lerArquivo("arquivoObjetos.txt");
+			JOptionPane.showMessageDialog(null, "Arquivo lido com sucesso.");
+		}
 		JOptionPane.showMessageDialog(null, "Criado CONJUNTO");
-		Frete frete1 = new Frete(100.0, "poa", "canoas", null, Situacao.EM_ANDAMENTO, new Cliente("Alexandre", "Rua", "999", "123"));
-		Frete frete3 = new Frete(90.0, "poa", "viamao", new ArrayList<ItemFrete>(), Situacao.ENCERRADO, new Cliente("Alexandre", "Avenida", "888", "4556"));
-		Frete frete4 = new Frete(80.0, "poa", "guaiba", new ArrayList<ItemFrete>(), Situacao.ENCERRADO, new Cliente("Alexandre", "Estrada", "777", "8956"));
-		Frete frete5 = new Frete(90.0, "poa", "viamao", new ArrayList<ItemFrete>(), Situacao.ENCERRADO, new Cliente("Eduardo", "Avenida", "888", "4556"));
-		Frete frete6 = new Frete(80.0, "poa", "guaiba", new ArrayList<ItemFrete>(), Situacao.ENCERRADO, new Cliente("Leonardo", "Estrada", "777", "8956"));
-		conjunto.cadastrar(frete1);
-		conjunto.cadastrar(frete3);
-		conjunto.cadastrar(frete4);
-		conjunto.cadastrar(frete5);
-		conjunto.cadastrar(frete6);
+	
 
 		while(true) {
 			boolean flag;
@@ -111,11 +107,16 @@ public class Menu {
 			case 2://Listar todos os fretes
 
 				JOptionPane.showMessageDialog(null, "Opção 02!");
-
+				try {		
 				if (conjunto.listarTodos().equals("")) 	
-					JOptionPane.showMessageDialog(null, "Nenhum frete cadastrado");
-				else 
+					JOptionPane.showMessageDialog(null, "Nenhum frete cadastrado.\nCadestre um frete utilizando a opção 1 do Menu");
+				else { 
+								
 					JOptionPane.showMessageDialog(null, "Imprimindo treeset: \n" + conjunto.listarTodos());
+				} }catch (NullPointerException e) {
+					JOptionPane.showMessageDialog(null, "Nenhum frete cadastrado.\nCadestre um frete utilizando a opção 1 do Menu");
+					}
+				
 				break;  
 
 			case 3: //Listar fretes de um cliente (pesquisar pelo nome)
@@ -156,7 +157,10 @@ public class Menu {
 				else JOptionPane.showMessageDialog(null, "Nenhum frete nessa situação localizado");	
 				break;
 
-			case 5:System.exit(0);
+			case 5:
+				arquivo.escreverArquivo(conjunto);
+				JOptionPane.showMessageDialog(null, "Arquivo salvo!");
+				System.exit(0);
 			break;
 
 			case 6: 
@@ -203,7 +207,7 @@ public class Menu {
 				}
 				break;
 			case 8:
-				Arquivo arquivo = new Arquivo("arquivoClasseObjetos.txt");
+			
 				arquivo.escreverArquivo(conjunto);
 				break;
 			case 9:

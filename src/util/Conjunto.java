@@ -1,5 +1,6 @@
 package util;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.TreeSet;
 import fretes.Frete;
@@ -20,7 +21,7 @@ public class Conjunto<T> implements Serializable,  OperacoesConjunto<T> {
 	}
 
 	@Override
-	public String listarTodos() {
+	public String listarTodos() throws NullPointerException {
 		String aux = "";
 		int cont = 0;
 		if(conjunto!=null) {
