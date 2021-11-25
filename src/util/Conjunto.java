@@ -20,17 +20,22 @@ public class Conjunto<T> implements OperacoesConjunto<T> {
 
 	@Override
 	public String listarTodos() {
-	    String aux = "";
-        if(conjunto!=null) {
-	         for (T e : conjunto) {
-				if(e!=null)
-					aux += "Frete:\n";
-					aux += e.toString() + "\n";
+		String aux = "";
+		int cont = 0;
+		if(conjunto!=null) {
+			for (T e : conjunto) {
+				if(e!=null) {
+					cont++;
+					aux += "Frete " + cont +  ":\n";
+				}
+				aux += e.toString() + "\n";
 			}
-        }
-	     return aux;
+			
+		}
+		return aux;
+		
 	}
-	
+
 
 	@Override
 	public boolean pesquisar(T objeto) {
@@ -43,6 +48,24 @@ public class Conjunto<T> implements OperacoesConjunto<T> {
 		return conjunto.remove(objeto);
 	}
 
+	
+	public Frete excluir(Situacao situacao) {
+		
+		if(conjunto!=null) {
+			for (T e : conjunto) {
+				Frete frete = (Frete) e;
+				if(e!=null && situacao.equals(frete.getSituacao())) {
+					return frete;					
+				}
+			}
+			
+		}
+		
+		
+		return null;
+	}
+	
+	
 	public String procurarNome(String nome) {
 		//aux para receber a String que será retornada. 
 		String aux = ""; 
