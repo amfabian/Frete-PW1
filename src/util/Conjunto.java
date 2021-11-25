@@ -1,6 +1,8 @@
 package util;
 
 import java.util.TreeSet;
+import fretes.Frete;
+
 
 public class Conjunto<T> implements OperacoesConjunto<T> {
 
@@ -22,11 +24,13 @@ public class Conjunto<T> implements OperacoesConjunto<T> {
         if(conjunto!=null) {
 	         for (T e : conjunto) {
 				if(e!=null)
+					aux += "Frete:\n";
 					aux += e.toString() + "\n";
 			}
         }
 	     return aux;
 	}
+	
 
 	@Override
 	public boolean pesquisar(T objeto) {
@@ -35,7 +39,33 @@ public class Conjunto<T> implements OperacoesConjunto<T> {
 
 	@Override
 	public boolean remover(T objeto) {
+		
 		return conjunto.remove(objeto);
+	}
+
+	public String procurarNome(String nome) {
+		//aux para receber a String que será retornada. 
+		String aux = ""; 
+		//flag para devolver mensagem caso não encontre.
+		boolean flag = false;
+		//contador para numerar a quantidade de fretes apresentadas.
+		int cont = 0;
+		if(conjunto!=null) {
+			for (T e : conjunto) {
+				//NAO GOSTEI DISSO.
+				//Eu queria poder pegar o nome do cliente através do TreeSet!!!!
+				Frete frete = (Frete) e;
+				if(e!=null && nome.equals(frete.getCliente().getNome())) {
+					cont++;
+					aux += "Frete " + cont +  ":\n";
+					aux += e.toString() + "\n";
+					flag = true;
+				}
+				System.out.println(e);
+			}
+		}
+		if (!flag) return "Cliente não possui fretes";
+		return aux;
 	}
 
 }
