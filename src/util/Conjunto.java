@@ -1,10 +1,11 @@
 package util;
 
+import java.io.Serializable;
 import java.util.TreeSet;
 import fretes.Frete;
 
 
-public class Conjunto<T> implements OperacoesConjunto<T> {
+public class Conjunto<T> implements Serializable,  OperacoesConjunto<T> {
 
 	private TreeSet<T> conjunto = new TreeSet<T>();
 

@@ -1,5 +1,9 @@
 package menus;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.TreeSet;
 
@@ -157,12 +161,47 @@ public class Menu {
 			case 5:System.exit(0);
 			break;
 
+			case 6: 
+				JOptionPane.showMessageDialog(null, "Opção 06 - Gravar arquivo!");
+				try {
+					String nomeArq = "arquivoObjetos.txt";
+					ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(nomeArq)); 
+					out.writeObject(conjunto);
+					out.flush();
+					out.close();
+					System.out.println("salvando objeto no arquivo!\n");
+					
+				}catch(Exception e) {
+					JOptionPane.showMessageDialog(null, "Exceção ao ler ou escrever objeto!");
+					
+					e.printStackTrace();
+				}
+				break;
+				
+			case 7:
+				JOptionPane.showMessageDialog(null, "Opção 07 - Ler arquivo!");
+				
+				try {
+					String nomeArq = "arquivoObjetos.txt";
+					ObjectInputStream in = new ObjectInputStream(new FileInputStream( nomeArq) );
+					Conjunto<Frete> conjuntinho = new Conjunto();
+					conjuntinho = (Conjunto) in.readObject();
+					JOptionPane.showMessageDialog(null, "Objeto lido do arquivo:\n" + conjuntinho.listarTodos());
+					
+					in.close();
+					
+				}catch(Exception e) {
+					JOptionPane.showMessageDialog(null, "Exceção ao ler ou escrever objeto!");
+					e.printStackTrace();
+				}
+				break;
 
 			default: 
 				JOptionPane.showMessageDialog(null, "Escolha uma das opções anteriores!"); 
 
+
 			}
-		}			   
+		}
 	}
 	public static int montaMenu() {
 		String menu = "";

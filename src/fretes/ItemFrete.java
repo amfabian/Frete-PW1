@@ -1,6 +1,8 @@
 package fretes;
 
-public class ItemFrete implements util.Validador {
+import java.io.Serializable;
+
+public class ItemFrete implements util.Validador, Serializable{
 	private String descricao;
 	private Double peso;
 

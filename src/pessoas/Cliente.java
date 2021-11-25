@@ -1,6 +1,8 @@
 package pessoas;
 
-public class Cliente extends Pessoa {
+import java.io.Serializable;
+
+public class Cliente extends Pessoa implements Serializable {
 	private String endereco;
 	private String telefone;
 	private String cpf;

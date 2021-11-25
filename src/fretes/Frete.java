@@ -1,11 +1,11 @@
 package fretes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-
 import pessoas.Cliente;
 import util.Situacao;
 
-public class Frete implements Comparable<Frete>{
+public class Frete implements Serializable, Comparable<Frete>{
 	private Double valor;
 	private String cidadeOrigem;
 	private String cidadeDestino;
