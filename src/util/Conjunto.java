@@ -38,37 +38,8 @@ public class Conjunto<T> implements Serializable,  OperacoesConjunto<T> {
 		
 	}
 
-
-	@Override
-	public boolean pesquisar(T objeto) {
-		return conjunto.contains(objeto);
-	}
-
-	@Override
-	public boolean remover(T objeto) {
-		
-		return conjunto.remove(objeto);
-	}
-
-	
-	public Frete excluir(Situacao situacao) {
-		
-		if(conjunto!=null) {
-			for (T e : conjunto) {
-				Frete frete = (Frete) e;
-				if(e!=null && situacao.equals(frete.getSituacao())) {
-					return frete;					
-				}
-			}
-			
-		}
-		
-		
-		return null;
-	}
-	
-	
-	public String procurarNome(String nome) {
+	@Override	
+	public String pesquisar(String nome) {
 		//aux para receber a String que será retornada. 
 		String aux = ""; 
 		//flag para devolver mensagem caso não encontre.
@@ -92,5 +63,27 @@ public class Conjunto<T> implements Serializable,  OperacoesConjunto<T> {
 		if (!flag) return "Cliente não possui fretes";
 		return aux;
 	}
+
+	@Override
+	public boolean remover(T objeto) {
+		
+		return conjunto.remove(objeto);
+	}
+
+	
+	public Frete procurarFreteSit(Situacao situacao) {
+		
+		if(conjunto!=null) {
+			for (T e : conjunto) {
+				Frete frete = (Frete) e;
+				if(e!=null && situacao.equals(frete.getSituacao())) {
+					return frete;					
+				}
+			}
+		}	
+		return null;
+	}
+	
+
 
 }

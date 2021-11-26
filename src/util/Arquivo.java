@@ -63,7 +63,7 @@ public class Arquivo {
 		return conjuntinho;
 				
 	}  catch(FileNotFoundException e) {
-		JOptionPane.showMessageDialog(null, "Exceção arquivo não encontrado!");
+		JOptionPane.showMessageDialog(null, "Arquivo não encontrado!");
 		e.printStackTrace();
 	} catch (SecurityException e) {
 		JOptionPane.showMessageDialog(null, "Exceção de segurança (sem permissão de escrita)!");
